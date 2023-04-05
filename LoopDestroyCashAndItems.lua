@@ -4,7 +4,7 @@ local jordan2 = "MoneyDrop"
 
 getgenv().LoopDel = true
 while LoopDel ~= false do
-    task.wait(0.2)
+    task.wait(0.000002)
     coroutine.resume(coroutine.create(function()
         for i,v in pairs(jordan1:GetChildren()) do
             if v.Name == tostring(jordan2) or v:isA("Part") or v:IsA("MeshPart") then
