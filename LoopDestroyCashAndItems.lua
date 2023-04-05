@@ -4,9 +4,10 @@ local jordan2 = "MoneyDrop"
 
 getgenv().LoopDel = true
 while LoopDel ~= false do
+    task.wait(0.2)
     coroutine.resume(coroutine.create(function()
         for i,v in pairs(jordan1:GetChildren()) do
-            if v.Name == jordan2 or v:isA("Part") or v:IsA("MeshPart") then
+            if v.Name == tostring(jordan2) or v:isA("Part") or v:IsA("MeshPart") then
                 v:Destroy()
                 for i,e in ipairs(jordan11:GetChildren()) do
                     if e:IsA("Part") then
