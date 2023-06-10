@@ -37,4 +37,4 @@ Lp.Chatted:Connect(function(b)
             game:GetService('RunService'):UnbindFromRenderStep("AutoArmor")
         end
     end)
-end
+end -- delete this if you don't use fluxus or electron
