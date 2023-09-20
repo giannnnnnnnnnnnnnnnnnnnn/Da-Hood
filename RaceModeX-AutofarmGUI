@@ -1,0 +1,378 @@
+if game.CoreGui:FindFirstChild("ScreenGui") then
+	game.CoreGui:FindFirstChild("ScreenGui"):Destroy()
+end;
+local a = loadstring(game:HttpGet("https://pastebin.com/raw/3hT5ihgT", true))()
+local b = a:CreateWindow('Main')
+b:Section('Auto farm')
+b:Section('Auto Farm')
+b:Toggle('Auto Rob', {
+	flag = "Rob"
+})
+b:Toggle('Auto Work (Shoe Store)', {
+	flag = "Shoe"
+})
+b:Toggle('Auto Work (Bottle)', {
+	flag = "bottle"
+})
+b:Toggle('Auto Box', {
+	flag = "box"
+})
+b:Toggle('Auto Muscle', {
+	flag = "muscle"
+})
+b:Section('Dropped Stuff')
+local c = b:Button("Money", function()
+	local d = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
+	for e, f in pairs(game.Workspace.Ignored.Drop:GetChildren()) do
+		if f.Name == "MoneyDrop" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = f.Parent:FindFirstChild("MoneyDrop").CFrame;
+			if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - f.Position).Magnitude <= 50 then
+				wait(.8)
+				fireclickdetector(f:FindFirstChild("ClickDetector"), 4)
+				wait(2)
+			end
+		end
+	end;
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(d)
+end)
+local g = b:Button("Tools", function()
+	local d = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
+	for h, i in pairs(game.Workspace.Ignored.ItemsDrop:GetChildren()) do
+		if i.Name == "Part" then
+			if i:FindFirstChild("[LockPicker]") or i:FindFirstChild("[Knife]") then
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = i.CFrame;
+				if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - i.Position).Magnitude <= 50 then
+					wait()
+				end
+			end
+		end
+	end;
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(d)
+end)
+b:Section('Misc')
+local j = b:Button("Hide Name  (mask)", function()
+	local d = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
+	local k = game.Workspace.Ignored.Shop["[Surgeon Mask] - $25"]
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+	if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - k.Head.Position).Magnitude <= 50 then
+		wait(.8)
+		fireclickdetector(k:FindFirstChild("ClickDetector"), 4)
+		toolf = game.Players.LocalPlayer.Backpack:WaitForChild("Mask")
+		toolf.Parent = game.Players.LocalPlayer.Character;
+		wait()
+		game.Players.LocalPlayer.Character:WaitForChild("Mask")
+		game:GetService("VirtualUser"):ClickButton1(Vector2.new())
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(d)
+	end
+end)
+local l = b:Button("WalkSpeed", function()
+	if not game.Players.LocalPlayer.Character.BodyEffects.Movement:FindFirstChild("SuperSpeed") then
+		local m = game:GetService"Players".LocalPlayer;
+		local n = Instance.new("IntValue", m.Character.BodyEffects.Movement)
+		n.Name = "SuperSpeed"
+	end
+end)
+local o = b:Button("JumpPower", function()
+	if not game.Players.LocalPlayer.Character.BodyEffects.Movement:FindFirstChild("HulkJump") then
+		local m = game:GetService"Players".LocalPlayer;
+		local p = Instance.new("IntValue", m.Character.BodyEffects.Movement)
+		p.Name = "HulkJump"
+	end
+end)
+b:Dropdown("Gun Spots", {
+	location = _G,
+	flag = "guntp",
+	list = {
+		"--Gun Spots--",
+		"FireFighter",
+		"Tyrone's Gunz 1",
+		"Tyrone's Gunz 2",
+		'Taco',
+		'School',
+		'Gas',
+		'Red House',
+		'Store'
+	}
+}, function(q)
+	if q ~= "--Gun Spots--" then
+		if q == "FireFighter" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-150.801, 53.8086, -91.395)
+		end;
+		if q == "Tyrone's Gunz 1" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-564.602, 7.99785, -735.63)
+		end;
+		if q == "Tyrone's Gunz 2" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(481.254, 48.003, -606.18)
+		end;
+		if q == "Taco" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(221, 5, 120)
+		end;
+		if q == "School" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-323, 2, -593)
+		end;
+		if q == "Gas" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(68, 4, -198)
+		end;
+		if q == "Red House" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(438, 4, -155)
+		end;
+		if q == "Store" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-160, 4, 215)
+		end
+	end
+end)
+local r = game.Workspace.Cashiers:GetChildren()
+for s = 1, #r do
+	local t = r[s]
+	t.Name = "CASHIER"..s
+end;
+for u, v in pairs(game.Workspace:GetDescendants()) do
+	if v:IsA("Seat") then
+		v:Destroy()
+	end
+end;
+for w, x in pairs(game.Workspace.MAP.Map["Da Furniture"]:GetChildren()) do
+	if x then
+		if x.Name == "Part" then
+			x.CanCollide = false
+		end
+	end
+end;
+for y, z in pairs(game.Workspace.MAP.Map["Ubi's Resturant"]:GetChildren()) do
+	if z then
+		if z.Name == "Part" then
+			if z.Size ~= Vector3.new(48, 3.25, 80) then
+				z.CanCollide = false
+			end
+		end
+	end
+end;
+for A, B in pairs(game.Workspace.MAP.Map["Gas Station"]["Gas Station"]:GetChildren()) do
+	if B then
+		if B.Name == "Part" then
+			if B.Size ~= Vector3.new(68, 1, 56) then
+				B.CanCollide = false
+			end
+		end
+	end
+end;
+function toTarget(d, C, D)
+	local E = game:service"TweenService"
+	local F = TweenInfo.new((C - d).Magnitude / 170, Enum.EasingStyle.Quad)
+	local G = tick()
+	local H, I = pcall(function()
+		local H = E:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], F, {
+			CFrame = D
+		})
+		H:Play()
+	end)
+	if not H then
+		return I
+	end
+end;
+function ToShoes(d, C, D)
+	local E = game:service"TweenService"
+	local F = TweenInfo.new((C - d).Magnitude / 50, Enum.EasingStyle.Quad)
+	local G = tick()
+	local H, I = pcall(function()
+		local H = E:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], F, {
+			CFrame = D
+		})
+		H:Play()
+	end)
+	if not H then
+		return I
+	end
+end;
+local function J(K, L)
+	local M = (K.Position - L.Position).magnitude;
+	if M <= 50 then
+		fireclickdetector(L:FindFirstChild("ClickDetector"), 4)
+		return M
+	end
+end;
+while wait() do
+	if b.flags.Rob then
+		repeat
+			for N, O in pairs(game.Workspace.Ignored.Drop:GetChildren()) do
+				if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - O.Position).Magnitude <= 50 then
+					local P = O;
+					J(game.Players.LocalPlayer.Character.HumanoidRootPart, O)
+					wait()
+				end
+			end;
+			if not game.Players.LocalPlayer.Character:FindFirstChild("Combat") then
+				local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Combat")
+				tool.Parent = game.Players.LocalPlayer.Character
+			end;
+			wait()
+			for s, Q in pairs(game.Workspace.Cashiers:GetChildren()) do
+				wait()
+				if Q:FindFirstChild("Humanoid") then
+					if Q.Humanoid.Health > 0 then
+						wait()
+						if Q.Name ~= "CASHIER5" then
+							Q.Wedge.Orientation = Vector3.new(0, 90, 0)
+							Q.Wedge.Size = Vector3.new(4, 4, 4)
+							Q.Wedge.CanCollide = false
+						end;
+						if Q.Name == "CASHIER5" then
+							Q.Wedge.Orientation = Vector3.new(0, 180, 0)
+							Q.Wedge.Size = Vector3.new(4, 4, 4)
+							Q.Wedge.CanCollide = false
+						end;
+						wait()
+						poss = Q.Wedge.Position - Vector3.new(0, 0, 0)
+						posc = Q.Wedge.CFrame - Vector3.new(-2.5, 0, 0)
+						toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position, poss, posc)
+						repeat
+							wait()
+						until (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position - poss).Magnitude < 50 or not b.flags.Rob or Q.Humanoid.Health <= 0;
+						repeat
+							if not game.Players.LocalPlayer.Character:FindFirstChild("Combat") then
+								local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Combat")
+								tool.Parent = game.Players.LocalPlayer.Character
+							end;
+							toTarget(game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position, poss, posc)
+							wait(.2)
+							game:GetService("VirtualUser"):Button1Down(Vector2.new())
+						until Q.Humanoid.Health <= 0 or not b.flags.Rob;
+						wait(.2)
+						for R = 5, 50 do
+							wait()
+							for N, O in pairs(game.Workspace.Ignored.Drop:GetChildren()) do
+								if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - O.Position).Magnitude <= 50 then
+									if O:IsA("Part") then
+										local P = O;
+										J(game.Players.LocalPlayer.Character.HumanoidRootPart, O)
+										wait()
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		until not b.flags.Rob
+	end;
+	if b.flags.Shoe then
+		repeat
+			for N, O in pairs(game.Workspace.Ignored.Drop:GetChildren()) do
+				if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - O.Position).Magnitude <= 50 then
+					local P = O;
+					J(game.Players.LocalPlayer.Character.HumanoidRootPart, O)
+					wait()
+				end
+			end;
+			wait()
+			for S, T in pairs(game.Workspace.Ignored.Drop:GetChildren()) do
+				wait()
+				if T:IsA("MeshPart") then
+					if T:FindFirstChild("ClickDetector") then
+						if game.Players.LocalPlayer.Character.BodyEffects.ShoesCollect.Value < 4 then
+							T.Orientation = Vector3.new(0, 0, 0)
+							wait()
+							posM = T.Position - Vector3.new(0, 0, 0)
+							poscM = T.CFrame - Vector3.new(0, -10, 0)
+							ToShoes(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position, posM, poscM)
+							repeat
+								wait()
+								wait()
+							until (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position - posM).Magnitude < 50 or not b.flags.Shoe
+						else
+							wait()
+							local U = game.Workspace.Ignored["Clean the shoes on the floor and come to me for cash"].Head;
+							posMV = U.Position - Vector3.new(0, 0, 0)
+							poscMV = U.CFrame - Vector3.new(0, -2, 0)
+							ToShoes(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position, posMV, poscMV)
+							wait(.3)
+							if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - U.Position).Magnitude <= 25 then
+								fireclickdetector(U.Parent.ClickDetector)
+								wait()
+							end
+						end
+					end
+				end
+			end
+		until not b.flags.Shoe
+	end;
+	wait()
+	if b.flags.box then
+		repeat
+			wait()
+			if not game.Players.LocalPlayer.Character:FindFirstChild("Combat") then
+				local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Combat")
+				tool.Parent = game.Players.LocalPlayer.Character
+			end;
+			for V, W in pairs(game.Workspace.MAP.Map.ArenaBOX:GetChildren()) do
+				wait()
+				warn(W)
+				if W.Name == "PunchingBagInGame" then
+					wait()
+					posMx = W:FindFirstChild("pretty ransom").Position - Vector3.new(0, 0, 0)
+					poscMx = W:FindFirstChild("pretty ransom").CFrame - Vector3.new(3, 0, 0)
+					ToShoes(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position, posMx, poscMx)
+					repeat
+						if not game.Players.LocalPlayer.Character:FindFirstChild("Combat") then
+							local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Combat")
+							tool.Parent = game.Players.LocalPlayer.Character
+						end;
+						ToShoes(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position, posMx, poscMx)
+						wait(.5)
+						game:GetService("VirtualUser"):ClickButton1(Vector2.new())
+					until not b.flags.box
+				end
+			end
+		until not b.flags.box
+	end;
+	if b.flags.muscle then
+		repeat
+			wait()
+			if not game.Players.LocalPlayer.Character:FindFirstChild("[HeavyWeights]") then
+				wait()
+				local k = game.Workspace.Ignored.Shop["[HeavyWeights] - $250"]
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = k.Head.CFrame + Vector3.new(0, 3, 0)
+				if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - k.Head.Position).Magnitude <= 50 then
+					wait(.8)
+					fireclickdetector(k:FindFirstChild("ClickDetector"), 4)
+				end
+			end;
+			if not game.Players.LocalPlayer.Character:FindFirstChild("[HeavyWeights]") then
+				tool = game.Players.LocalPlayer.Backpack:WaitForChild("[HeavyWeights]")
+				tool.Parent = game.Players.LocalPlayer.Character
+			end;
+			game:GetService("VirtualUser"):ClickButton1(Vector2.new())
+			local d = Vector3.new(-1006.99, -51.1542, -1014.33)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(d)
+		until not b.flags.muscle
+	end;
+	if b.flags.bottle then
+		repeat
+			wait()
+			local d = Vector3.new(116.81, 22.8002, -478.199)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(d)
+			local X;
+			for Y, Z in pairs(game.Workspace.Ignored.HospitalJob:GetChildren()) do
+				wait()
+				if Z then
+					if Z:IsA("Model") then
+						if Z.Name == "Can I get the Green bottle" then
+							X = "Green"
+						end;
+						if Z.Name == "Can I get the Red bottle" then
+							X = "Red"
+						end;
+						if Z.Name == "Can I get the Blue bottle" then
+							X = "Blue"
+						end;
+						print(X)
+						print(Z)
+						fireclickdetector(game.Workspace.Ignored.HospitalJob:FindFirstChild(X):FindFirstChild("ClickDetector"), 4)
+						fireclickdetector(Z:FindFirstChild("ClickDetector"), 4)
+						wait(3)
+					end
+				end
+			end
+		until not b.flags.bottle
+	end
+end
