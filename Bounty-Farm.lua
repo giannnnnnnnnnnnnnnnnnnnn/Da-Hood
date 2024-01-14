@@ -131,7 +131,9 @@ if isStomper or isKiller then -- checks for mutual groups
                     until tostring(player.DataFolder.Information.Crew.Value) == tostring(stomperGroups[c])
                 end
             end
-        end
+        end 
+
+        
     end)
 end
 
